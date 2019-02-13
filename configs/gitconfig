@@ -1,0 +1,39 @@
+[user]
+  name = Bill Xiong
+  email = billxiong99@gmail.com
+
+[github]
+  user = bxio
+
+[core]
+  excludesfile = ~/.gitignore
+
+[alias]
+  c = commit -am
+  e = commit --amend --all
+  u = pull
+  p = push
+  co = checkout
+  l = log --oneline
+  d = diff
+  ds = diff --staged
+  s = status -s
+
+[url "git@github.com:bxio/"]
+  insteadOf = "gh:"
+[url "git://github.com/"]
+  insteadOf = "github:"
+[url "git@gitlab.com:bxio/"]
+  insteadOf = "gl:"
+[url "git://gitlab.com/"]
+  insteadOf = "gitlab:"
+
+[push]
+  default = current
+  followTags = true
+
+[fetch]
+  prune = true
+
+[help]
+  autocorrect = 1

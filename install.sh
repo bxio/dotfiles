@@ -64,7 +64,7 @@ touch ~/.hushlogin
 
 # create dotfiles directory and clone
 
-[[ ! -d "$HOME/Projects" ]] && mkdir -p "$HOME/Projects" & git clone -q https://github.com/bxio/dotfiles.git "$DOTLOC" &doing "Cloning dotfiles"
+[[ ! -d "$HOME/Projects" ]] && mkdir -p "$HOME/Projects" & git clone -q https://github.com/bxio/dotfiles.git "$DOTLOC" & doing "Cloning dotfiles"
 
 
 # install homebrew if missing
@@ -87,10 +87,10 @@ fi
 
 # link required files
 check "Linking Files..."
-for file in zshrc zshenv gitconfig gitignore
+for file in .zshrc .zshenv .hyper.js .gitconfig .gitignore
 do
   #rm ~/.$file &>/dev/null
-  cp "$DOTLOC/$file" ~/.$file
+  cp "$DOTLOC/configs/$file" ~/$file
 done
 success
 

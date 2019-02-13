@@ -1,0 +1,137 @@
+# Universal Shell Aliases, should work with both Bash and ZSH.
+alias ls=exa
+
+alias mkdir='mkdir -p'
+alias chown='chown -Rv'
+alias chmod='chmod -Rv'
+alias grep='grep --color=always'
+# alias diff='colordiff'
+alias tar='tar --verbose'
+alias tmux='tmux -2'
+#alias rsync='rsync --verbose  --progress --stats --compress --recursive --times --perms --links exclude "*bak" --exclude "*~*"'
+alias psaux='ps aux'
+alias psl='psaux|more'
+alias psg='psaux|grep'
+alias df='pydf -a -h -B'
+alias more='less'
+alias tracert='mtr'
+alias traceroute='mtr'
+alias logout='sudo pkill -u $USER'
+alias log-out='sudo pkill -u $USER'
+
+#afk
+alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+
+# brew
+alias brewski='brew update && brew upgrade && brew cleanup -s; brew doctor'
+
+
+#transfer
+transfer() {
+    # check arguments
+    if [ $# -eq 0 ];
+    then
+        echo "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"
+        return 1
+    fi
+
+    # get temporarily filename, output is written to this file show progress can be showed
+    tmpfile=$( mktemp -t transferXXX )
+
+    # upload stdin or file
+    file=$1
+
+    if tty -s;
+    then
+        basefile=$(basename "$file" | sed -e 's/[^a-zA-Z0-9._-]/-/g')
+
+        if [ ! -e $file ];
+        then
+            echo "File $file doesn't exists."
+            return 1
+        fi
+
+        if [ -d $file ];
+        then
+            # zip directory and transfer
+            zipfile=$( mktemp -t transferXXX.zip )
+            cd $(dirname $file) && zip -r -q - $(basename $file) >> $zipfile
+            curl --progress-bar --upload-file "$zipfile" "https://transfer.sh/$basefile.zip" >> $tmpfile
+            rm -f $zipfile
+        else
+            # transfer file
+            curl --progress-bar --upload-file "$file" "https://transfer.sh/$basefile" >> $tmpfile
+        fi
+    else
+        # transfer pipe
+        curl --progress-bar --upload-file "-" "https://transfer.sh/$file" >> $tmpfile
+    fi
+
+    # cat output link
+    cat $tmpfile
+
+    # cleanup
+    rm -f $tmpfile
+}
+
+alias vom='vim'
+
+
+alias '.=cd .'
+alias '..=cd ..'
+alias '...=cd ../..'
+alias '....=cd ../../..'
+alias '.....=cd ../../../..'
+
+# Recursively delete `.DS_Store` files
+alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
+
+# Airport CLI alias
+alias airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport'
+
+# Ring the terminal bell, and put a badge on Terminal.app’s Dock icon
+# (useful when executing time-consuming commands)
+alias badge="tput bel"
+
+# Intuitive map function
+# For example, to list all directories that contain a certain file:
+# find . -name .gitattributes | map dirname
+alias map="xargs -n1"
+
+alias md="mkdir -p"
+
+alias e='exit'
+
+alias cl='clear'
+
+# don't use finder to trash files bc it will leave DS_Store files everywhere
+alias trash='trash -a'
+
+# as I'm switching to firefox for non-dev browsing I want chrome to always open with devtools
+alias chrome='open -a "Google Chrome Canary" --args --auto-open-devtools-for-tabs'
+
+# git
+alias gcn='git clone'
+alias ga='git add'
+alias gaa='git add -A'
+alias gcm='git commit -m'
+alias gcmu="git commit -m 'update'"
+alias gcau="git commit -am 'update'"
+alias gst='git status'
+alias gpom='git push --all origin'
+alias gpum='git pull --all upstream'
+alias gfum='git fetch --all upstream'
+alias gp='git pull --all'
+alias gpa='git pull --all'
+alias gf='git fetch --all'
+alias grv='git remote -v'
+alias grau='git remote add upstream'
+# push tracking branch to remote tracking branch
+# ex:  git push [remotename] [trackingbranch]:[remotetrackingbranch]
+# ex:  git push origin precise:precise
+# ex:  git push origin v2.0.0:v2.0.0
+alias gptr='git push origin $1:$2'
+alias gits='git status'
+
+# https://github.com/vigneshwaranr/bd
+alias bd='. ~/bin/bd -s'

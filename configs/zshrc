@@ -1,7 +1,14 @@
-HISTFILE="~/.zsh_history"
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE=~/.zsh_history
+
+export ZSH=/Users/bill/.oh-my-zsh
+source $ZSH/oh-my-zsh.sh
+
 # Set pure theme
 ZSH_THEME=""
 autoload -U promptinit; promptinit
+autoload -U history-search-end
 prompt pure
 # set aliases
 source ~/.aliases
@@ -22,3 +29,7 @@ export PATH="/usr/local/opt/ruby/bin:$PATH"
 
 # define plugins
 plugins=(git colored-man colorize pip python brew osx zsh-autosuggestions zsh-syntax-highlighting history-substring-search)
+
+# bind key for history search
+bindkey "^[[A" history-substring-search-up
+bindkey "^[[B" history-substring-search-down
