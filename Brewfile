@@ -30,7 +30,7 @@ brew 'imagemagick'
 brew 'mas'
 brew 'mongodb'
 brew 'redis'
-brew 'docker-clean'
+brew 'awscli'
 
 tap 'caskroom/cask'
 

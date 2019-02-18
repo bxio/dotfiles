@@ -13,7 +13,7 @@ alias d="cd ~/Designs"
 alias m="cd ~/Movies"
 
 # A less noisy tree list
-alias t="tree -I 'node_modules|.git|test|.DS_Store' --noreport -C -a --dirsfirst"
+alias tree="tree -I 'node_modules|.git|test|.DS_Store' --noreport -C -a --dirsfirst"
 
 # be less destructive
 alias rm="trash"
@@ -23,9 +23,6 @@ alias a2c="aria2c -x16 -s16"
 
 # make nested directories
 alias mkdir="mkdir -p"
-
-# git shortcut
-alias g="hub"
 
 # youtube-dl
 alias ytd="youtube-dl"
@@ -66,7 +63,7 @@ function orphans () {
   done
 }
 
-# for moving quickly into my projects 
+# for moving quickly into my projects
 function repo {
     REPO_BASE="$HOME/Projects"
     REPO_PATH=$(find "$REPO_BASE" -mindepth 1 -maxdepth 1 -type d -name "*$1*" | head -n 1)

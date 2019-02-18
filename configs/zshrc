@@ -1,35 +1,75 @@
+#------------------
+# Shell Variables
+#------------------
+
+# Specify VS Code as default editor for the React Native Simulator
+export REACT_EDITOR=code-insiders
+# Set VS Code Insiders as default code editor
+export EDITOR=code-insiders
+# Android SDK
+export ANDROID_HOME=~/Library/Android/sdk
+# NVM directory variable
+export NVM_DIR="$HOME/.nvm"
+
+#------------------
+# PATH Manipulations
+#------------------
+
+# Add mySQL executable to Path
+export PATH=$PATH:/usr/local/mysql/bin
+# Add Laravel Valet to PATH
+export PATH=${PATH}:$HOME/.composer/vendor/bin
+# Add Android SDK to path
+export PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
+# Add ruby to PATH
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+export PATH="/usr/local/lib/ruby/gems/2.5.0/bin:$PATH"
+
+
+#------------------
+# Zsh hooks
+#------------------
+
 HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.zsh_history
-
-export ZSH=/Users/bill/.oh-my-zsh
-source $ZSH/oh-my-zsh.sh
-
-# Set pure theme
-ZSH_THEME=""
-autoload -U promptinit; promptinit
-autoload -U history-search-end
-prompt pure
-# set aliases
-source ~/.aliases
-
-# fuzzy matching
-CASE_SENSITIVE="false"
 
 # enable zsh syntax highlighting and autosuggestions
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh
-# add zsh funtions path
-fpath=(/usr/local/Homebrew/completions/zsh/ $fpath)
-fpath=(/usr/local/share/zsh-completions $fpath)
-# Add homebrew python to the path
-export PATH="/usr/local/opt/python/libexec/bin:$PATH"
-export PATH="/usr/local/opt/ruby/bin:$PATH"
-
-# define plugins
-plugins=(git colored-man colorize pip python brew osx zsh-autosuggestions zsh-syntax-highlighting history-substring-search)
-
 # bind key for history search
 bindkey "^[[A" history-substring-search-up
 bindkey "^[[B" history-substring-search-down
+
+
+
+#------------------
+# Aliases (for a full list of aliases, run `alias`)
+#------------------
+source ~/.aliases
+
+
+# General Aliases
+
+# Open .zshrc to be editor in VS Code
+alias change="code ~/.zshrc"
+# Re-run source command on .zshrc to update current terminal session with new settings
+alias update="source ~/.zshrc"
+# cd into iCloud drive folder in terminal
+alias icloud="cd ~/Library/Mobile\ Documents/com~apple~CloudDocs"
+
+# Clear terminal
+alias c='clear'
+
+#------------------
+# Miscellaneous
+#------------------
+
+
+# Set Spaceship ZSH as a prompt
+autoload -U promptinit
+promptinit
+prompt spaceship
+
+

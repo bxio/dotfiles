@@ -26,7 +26,7 @@ module.exports = {
     cursorAccentColor: '#000',
 
     // `'BEAM'` for |, `'UNDERLINE'` for _, `'BLOCK'` for █
-    cursorShape: 'BEAM',
+    cursorShape: 'BLOCK',
 
     // set to `true` (without backticks and without quotes) for blinking cursor
     cursorBlink: false,
@@ -113,10 +113,20 @@ module.exports = {
             command: 'git clone ',
             prompt: true
           },
+          {
+            label: 'bx',
+            command: 'git config user.name bxio && git config user.email billxiong99@gmail.com',
+            prompt: true
+          },
+          {
+            label: 'vld',
+            command: 'git config user.name verylongdelay && git config user.email verylongdelay@gmail.com',
+            prompt: true
+          },
         ]
       },
       {
-        label: 'vim',
+        label: '💻vim',
         options: [{
             label: 'quit',
             command: ':q!',
@@ -130,18 +140,35 @@ module.exports = {
         ]
       },
       {
-        label: 'Docker',
+        label: '🐳Docker',
         options: [{
           label: 'clean',
-          command: 'echo "y" | docker system prune'
+          backgroundColor: '#37adff',
+          command: 'echo "y" | docker system prune',
+          prompt: true
         }]
       },
       {
-        label: 'Functions',
+        label: 'fn()',
         options: [{
-          label: 'quit',
-          command: 'exit'
-        }]
+            label: 'quit',
+            backgroundColor: '#d13232',
+            command: 'exit'
+          },
+          {
+            label: 'ssh-add',
+            command: 'ssh-add ~/.ssh/gh_vld ~/.ssh/id_rsa ~/.ssh/google_compute_engine'
+          },
+          {
+            label: 'afk',
+            command: '/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend'
+          },
+          {
+            label: 'brew',
+            backgroundColor: '#37adff',
+            command: 'brew update && brew upgrade && brew cleanup -s; brew doctor'
+          }
+        ]
       },
     ],
 
@@ -202,13 +229,15 @@ module.exports = {
   //   `hyperpower`
   //   `@company/project`
   //   `project#1.0.1`
-  plugins: [
-    "hyper-custom-touchbar",
-    "hyper-tabs-enhanced",
+  plugins: ["hyper-custom-touchbar",
+    "hyper-tabs-enhanced", // "hyperterm-dibdabs",
+    // "hyper-tab-icons",
     "hyper-statusline",
     "hyperalfred",
     "hyper-quit",
-    "hypercwd"
+    "hypercwd",
+    "hyper-sync-settings",
+    "hyperterm-cursor"
   ],
 
   // in development, you can create a directory under
