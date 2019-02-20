@@ -115,11 +115,13 @@ module.exports = {
           },
           {
             label: 'bx',
+            backgroundColor: '#37adff',
             command: 'git config user.name bxio && git config user.email billxiong99@gmail.com',
             prompt: true
           },
           {
             label: 'vld',
+            backgroundColor: '#d13232',
             command: 'git config user.name verylongdelay && git config user.email verylongdelay@gmail.com',
             prompt: true
           },
@@ -142,11 +144,23 @@ module.exports = {
       {
         label: '🐳Docker',
         options: [{
-          label: 'clean',
-          backgroundColor: '#37adff',
-          command: 'echo "y" | docker system prune',
-          prompt: true
-        }]
+            label: 'clean',
+            backgroundColor: '#37adff',
+            command: 'echo "y" | docker system prune',
+            prompt: true
+          },
+          {
+            label: 'dangling',
+            backgroundColor: '#37adff',
+            command: 'docker rmi -f $(docker images --quiet --filter "dangling=true")',
+          },
+          {
+            label: 'killall',
+            backgroundColor: '#d13232',
+            command: 'docker stop $(docker ps -a -q)',
+            prompt: true
+          }
+        ]
       },
       {
         label: 'fn()',

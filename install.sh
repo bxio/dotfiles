@@ -77,37 +77,27 @@ fi
 # install homebrew packages
 brew bundle install --file="$DOTLOC/Brewfile" >/dev/null & doing "Installing packages"
 
-
-# install iStats for battery stats
-if [[ ! -x "$(command -v iStats)" ]]; then
-  gem install iStats > /dev/null & doing "Installing iStats"
-else
-  success "iStats is already installed.\\n"
-fi
-
-# link required files
-check "Linking Files..."
-for file in .zshrc .zshenv .hyper.js .gitconfig .gitignore
-do
-  #rm ~/.$file &>/dev/null
-  cp "$DOTLOC/configs/$file" ~/$file
-done
-success
-
 # change default shell to zsh
 chsh -s zsh & doing "Changing default shell to zsh"
 
-check "Installing pure prompt..."
-# cleanup old prompt files
-if [[ -x $FUNPATH/prompt_pure_setup && -x $FUNPATH/async ]]; then
-  rm -f $FUNPATH/prompt_pure_setup
-  rm -f $FUNPATH/async
-fi
-# install pure prompt
-curl https://raw.githubusercontent.com/sindresorhus/pure/master/pure.zsh --create-dirs -fsSLo $FUNPATH/prompt_pure_setup
-curl https://raw.githubusercontent.com/sindresorhus/pure/master/async.zsh -fsSLo $FUNPATH/async
-chmod +x $FUNPATH/prompt_pure_setup
-chmod +x $FUNPATH/async
+check "Installing spaceship prompt..."
+npm install -g spaceship-prompt
+success
+
+# link required files
+check "Linking Files..."
+# link zsh
+for file in zshrc zshenv
+do
+  #rm ~/.$file &>/dev/null
+  ln -s -i $DOTLOC/configs/zsh/$file $HOME/.$file
+done
+# link git, aliases, and hyper
+for file in gitconfig gitignore hyper.js
+do
+  #rm ~/.$file &>/dev/null
+  ln -s -i $DOTLOC/configs/$file $HOME/.$file
+done
 success
 
 check "Installing completions..."
@@ -118,4 +108,4 @@ ln -s "$DOTLOC/completions/_repo" $FUNPATH/_repo
 success
 
 # reload shell
-exec zsh
+exec hyper
