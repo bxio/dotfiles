@@ -96,10 +96,10 @@ do
 done
 
 # link git, aliases, and hyper
-for file in gitconfig gitignore hyper.js
+for file in gitconfig gitignore gitignore_global hyper.js
 do
   #rm ~/.$file &>/dev/null
-  ln -s -i $DOTLOC/configs/$file $HOME/.$file
+  ln -s -i $DOTLOC/configs/$file $HOME/.$file & check "Linking $file..."
 done
 success
 
@@ -117,9 +117,26 @@ ln -s -i $DOTLOC/mac/alfred $HOME/Library/Application\ Support/Alfred\ 3/Alfred.
 success
 
 # Rocket
+check "Loading Rocket Preferences..."
 ln -s $DOTLOC/mac/Rocket $HOME/Library/Application\ Support/Rocket
 # Docker for Mac
+check "Loading Docker Preferences..."
 ln -s $DOTLOC/mac/docker/settings.json $HOME/Library/Group\ Containers/group.com.docker/settings.json
+
+### Langs stuff ###
+# PHP
+mkdir $HOME/.config/psysh
+ln -s -i ${DOTFILES_PATH}/langs/php/psysh-config.php $HOME/.config/psysh/config.php
+ln -s -i ${DOTFILES_PATH}/langs/php/composer.json $HOME/.composer/composer.json
+
+# Clojure
+mkdir $HOME/.config/clojure
+ln -s -i ${DOTFILES_PATH}/langs/clojure/profiles.clj $HOME/.config/clojure/profiles.clj
+
+# Scala
+mkdir -p $HOME/.sbt/1.0/plugins
+ln -s -i ${DOTFILES_PATH}/langs/scala/plugins.sbt $HOME/.sbt/1.0/plugins/plugins.sbt
+
 
 # reload shell
 exec hyper
