@@ -251,7 +251,8 @@ module.exports = {
     "hyper-quit",
     "hypercwd",
     "hyper-sync-settings",
-    "hyperterm-cursor"
+    "hyperterm-cursor",
+    "hyper-simple-highlight-active-session",
   ],
 
   // in development, you can create a directory under
