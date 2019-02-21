@@ -1,0 +1,23 @@
+{
+  "dockerAppLaunchPath" : "/Applications/Docker.app",
+  "diskSizeMiB" : 65536,
+  "linuxDaemonConfigCreationDate" : "2018-05-17 19:43:28 +0000",
+  "diskPath" : "/Users/bill/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux/Docker.qcow2",
+  "filesharingDirectories" : [
+    "/Users",
+    "/Volumes",
+    "/private",
+    "/tmp"
+  ],
+  "channelID" : "stable",
+  "version" : "2.0.0.3",
+  "proxyHttpMode" : "system",
+  "defaultMachineMigrationStatus" : 4,
+  "cpus" : 2,
+  "memoryMiB" : 2048,
+  "buildNumber" : "31259",
+  "displayedWelcomeWhale" : true,
+  "autoStart" : true,
+  "settingsVersion" : 1,
+  "displayedWelcomeMessage" : true
+}

@@ -57,10 +57,8 @@ else
   success
 fi
 
-# No help from next launch
+# Remove bash last login
 touch ~/.hushlogin
-
-# sleep 3 & doing "zzz"
 
 # create dotfiles directory and clone
 
@@ -74,15 +72,19 @@ else
   success "Homebrew is already installed.\\n"
 fi
 
+
 # install homebrew packages
 brew bundle install --file="$DOTLOC/Brewfile" >/dev/null & doing "Installing packages"
+
 
 # change default shell to zsh
 chsh -s zsh & doing "Changing default shell to zsh"
 
+# install spaceship prompt
 check "Installing spaceship prompt..."
 npm install -g spaceship-prompt
 success
+
 
 # link required files
 check "Linking Files..."
@@ -92,6 +94,7 @@ do
   #rm ~/.$file &>/dev/null
   ln -s -i $DOTLOC/configs/zsh/$file $HOME/.$file
 done
+
 # link git, aliases, and hyper
 for file in gitconfig gitignore hyper.js
 do
@@ -106,6 +109,17 @@ if [[ -x $FUNPATH/_repo ]]; then
 fi
 ln -s "$DOTLOC/completions/_repo" $FUNPATH/_repo
 success
+
+# Alfred
+check "Loading Alfred Preferences..."
+mkdir -p $HOME/Library/Application\ Support/Alfred\ 3/
+ln -s -i $DOTLOC/mac/alfred $HOME/Library/Application\ Support/Alfred\ 3/Alfred.alfredpreferences
+success
+
+# Rocket
+ln -s $DOTLOC/mac/Rocket $HOME/Library/Application\ Support/Rocket
+# Docker for Mac
+ln -s $DOTLOC/mac/docker/settings.json $HOME/Library/Group\ Containers/group.com.docker/settings.json
 
 # reload shell
 exec hyper
