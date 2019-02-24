@@ -77,3 +77,12 @@ cask 'the-unarchiver'
 cask 'vlc'
 cask 'windscribe'
 cask 'xld'
+
+tap 'homebrew/cask-fonts'
+
+cask 'font-dejavu-sans'
+cask 'font-dejavusansmono-nerd-font'
+cask 'font-dejavusansmono-nerd-font-mono'
+cask 'font-fontawesome'
+cask 'font-roboto-mono'
+cask 'font-source-code-pro'
