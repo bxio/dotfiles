@@ -53,6 +53,7 @@ fi
 doing "Looking for dotfiles..."
 if [[ -d  $DOTLOC ]]; then
   fail "\\033[2m$HOME/.dotfiles\\033[0m already exists."
+  mv $HOME/.dotfiles $HOME/.dotfiles_old
 else
   success
 fi

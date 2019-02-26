@@ -29,7 +29,7 @@ module.exports = {
     cursorShape: 'BLOCK',
 
     // set to `true` (without backticks and without quotes) for blinking cursor
-    cursorBlink: false,
+    cursorBlink: true,
 
     // color of the text
     foregroundColor: '#CDD2E9',
@@ -100,13 +100,12 @@ module.exports = {
           },
           {
             label: 'log',
+            backgroundColor: '#4a846a',
             command: 'git log'
           },
           {
-            label: 'add .',
-            command: 'git add .',
-            icon: '/tmp/icons8-add-file-44.png',
-            iconPosition: 'right'
+            label: 'remote',
+            command: 'git remote -v'
           },
           {
             label: 'clone',
@@ -139,13 +138,18 @@ module.exports = {
             command: ':x',
             esc: true
           },
+          {
+            label: 'date',
+            command: ':r !date',
+            esc: true
+          },
         ]
       },
       {
         label: '🐳Docker',
         options: [{
             label: 'clean',
-            backgroundColor: '#37adff',
+            // backgroundColor: '#37adff',
             command: 'echo "y" | docker system prune',
             prompt: true
           },
@@ -153,21 +157,30 @@ module.exports = {
             label: 'dangling',
             backgroundColor: '#37adff',
             command: 'docker rmi -f $(docker images --quiet --filter "dangling=true")',
+            esc: true
+          },
+          {
+            label: 'img list',
+            //backgroundColor: '#d13232',
+            command: 'docker image list',
+            esc: true
           },
           {
             label: 'killall',
             backgroundColor: '#d13232',
             command: 'docker stop $(docker ps -a -q)',
-            prompt: true
+            prompt: true,
+            esc: true
           }
         ]
       },
       {
         label: 'fn()',
-        options: [{
-            label: 'quit',
-            backgroundColor: '#d13232',
-            command: 'exit'
+        options: [
+          {
+            label: 'gs',
+            backgroundColor: '#37adff',
+            command: 'gsutil du -sh gs://artifacts.harmedore.appspot.com'
           },
           {
             label: 'ssh-add',
@@ -194,6 +207,13 @@ module.exports = {
 
     hypercwd: {
       initialWorkingDirectory: '~/Developer'
+    },
+
+    hypernpm: {
+      // wil run `npm run lint`
+      1: "lint",
+      // will run `npm test` since it's a native npm command
+      5: "test"
     },
 
 
@@ -248,11 +268,11 @@ module.exports = {
     // "hyper-tab-icons",
     "hyper-statusline",
     "hyperalfred",
-    "hyper-quit",
     "hypercwd",
     "hyper-sync-settings",
     "hyperterm-cursor",
     "hyper-simple-highlight-active-session",
+    "hypernpm",
   ],
 
   // in development, you can create a directory under
