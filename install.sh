@@ -105,10 +105,13 @@ done
 success
 
 check "Installing completions..."
-if [[ -x $FUNPATH/_repo ]]; then
-  rm -f $FUNPATH/_repo
-fi
-ln -s "$DOTLOC/completions/_repo" $FUNPATH/_repo
+for file in repo hub
+do
+  if [[ -x $FUNPATH/_$file ]]; then
+    rm -f $FUNPATH/_$file
+  fi
+  ln -s "$DOTLOC/completions/_$file" $FUNPATH/_$file & check "Linking $file..."
+done
 success
 
 # Alfred
@@ -127,16 +130,16 @@ ln -s $DOTLOC/mac/docker/settings.json $HOME/Library/Group\ Containers/group.com
 ### Langs stuff ###
 # PHP
 mkdir $HOME/.config/psysh
-ln -s -i ${DOTFILES_PATH}/langs/php/psysh-config.php $HOME/.config/psysh/config.php
-ln -s -i ${DOTFILES_PATH}/langs/php/composer.json $HOME/.composer/composer.json
+ln -s -i ${DOTLOC}/langs/php/psysh-config.php $HOME/.config/psysh/config.php
+ln -s -i ${DOTLOC}/langs/php/composer.json $HOME/.composer/composer.json
 
 # Clojure
 mkdir $HOME/.config/clojure
-ln -s -i ${DOTFILES_PATH}/langs/clojure/profiles.clj $HOME/.config/clojure/profiles.clj
+ln -s -i ${DOTLOC}/langs/clojure/profiles.clj $HOME/.config/clojure/profiles.clj
 
 # Scala
 mkdir -p $HOME/.sbt/1.0/plugins
-ln -s -i ${DOTFILES_PATH}/langs/scala/plugins.sbt $HOME/.sbt/1.0/plugins/plugins.sbt
+ln -s -i ${DOTLOC}/langs/scala/plugins.sbt $HOME/.sbt/1.0/plugins/plugins.sbt
 
 
 # reload shell
