@@ -30,8 +30,8 @@ export PATH="/usr/local/lib/ruby/gems/2.5.0/bin:$PATH"
 # Zsh hooks
 #------------------
 
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=100
+SAVEHIST=100
 HISTFILE=~/.zsh_history
 
 # enable zsh syntax highlighting and autosuggestions
