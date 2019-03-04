@@ -9,7 +9,7 @@ module.exports = {
     updateChannel: 'stable',
 
     // default font size in pixels for all tabs
-    fontSize: 14,
+    fontSize: 16,
 
     // font family with optional fallbacks
     fontFamily: '"Roboto Mono for Powerline", "Meslo LG L DZ for Powerline", "Source Code Pro for Powerline", Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
@@ -184,10 +184,19 @@ module.exports = {
           },
           {
             label: 'ssh-add',
+            backgroundColor: '#97606A',
             command: 'ssh-add ~/.ssh/gh_vld ~/.ssh/id_rsa ~/.ssh/google_compute_engine'
           },
           {
+            label: 'dig',
+            backgroundColor: '#5CC390',
+            command: 'dig +nostats +nocomments +nocmd ',
+            prompt: true,
+            esc: true
+          },
+          {
             label: 'afk',
+            backgroundColor: '#8264A2',
             command: '/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend'
           },
           {
