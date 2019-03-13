@@ -250,10 +250,8 @@ module.exports = {
     // set to `false` for no bell
     bell: 'SOUND',
 
-    // if `true` (without backticks and without quotes), selected text will automatically be copied to the clipboard
     copyOnSelect: false,
 
-    // if `true` (without backticks and without quotes), hyper will be set as the default protocol client for SSH
     defaultSSHApp: true,
 
     // if `true` (without backticks and without quotes), on right click selected text will be copied or pasted if no
@@ -273,8 +271,7 @@ module.exports = {
   //   `@company/project`
   //   `project#1.0.1`
   plugins: ["hyper-custom-touchbar",
-    "hyper-tabs-enhanced", // "hyperterm-dibdabs",
-    // "hyper-tab-icons",
+    "hyper-tabs-enhanced",
     "hyper-statusline",
     "hyperalfred",
     "hypercwd",

@@ -33,6 +33,7 @@ brew 'mongodb'
 brew 'redis'
 brew 'awscli'
 brew 'azure-cli'
+brew 'rust'
 
 tap 'caskroom/cask'
 
