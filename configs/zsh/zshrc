@@ -1,11 +1,27 @@
+# TODO: Delete this function once https://github.com/microsoft/vscode/issues/204085 is fixed
+# function code() {
+#  path_to_code_executable "$@" 2>/dev/null
+#   # using the example above:
+#   # /usr/local/bin/code "$@" 2>/dev/null
+# }
+
+# Homebrew auto-update to 1 week
+export HOMEBREW_AUTO_UPDATE_SECS=86400
+# Homebrew path
+export PATH="/opt/homebrew/bin:$PATH"
+#------------------
+#### FIG ENV VARIABLES ####
+# Please make sure this block is at the start of this file.
+[ -s ~/.fig/shell/pre.sh ] && source ~/.fig/shell/pre.sh
+#### END FIG ENV VARIABLES ####
 #------------------
 # Shell Variables
 #------------------
 
 # Specify VS Code as default editor for the React Native Simulator
-export REACT_EDITOR=code-insiders
+export REACT_EDITOR="code -w"
 # Set VS Code Insiders as default code editor
-export EDITOR=code-insiders
+export EDITOR="code -w"
 # Android SDK
 export ANDROID_HOME=~/Library/Android/sdk
 # NVM directory variable
@@ -25,15 +41,16 @@ export PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 export PATH="/usr/local/lib/ruby/gems/2.5.0/bin:$PATH"
 
-
 #------------------
 # Zsh hooks
 #------------------
 
-HISTSIZE=100
-SAVEHIST=100
+HISTSIZE=5000
+SAVEHIST=5000
 HISTFILE=~/.zsh_history
 
+# Why not completions?
+fpath=(/usr/local/share/zsh-completions $fpath)
 # enable zsh syntax highlighting and autosuggestions
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -49,25 +66,49 @@ bindkey "^[[B" history-substring-search-down
 #------------------
 source ~/.aliases
 
-
-# General Aliases
-
-# Open .zshrc to be editor in VS Code
-alias change="code ~/.zshrc"
-# Re-run source command on .zshrc to update current terminal session with new settings
-alias update="source ~/.zshrc"
-# cd into iCloud drive folder in terminal
-alias icloud="cd ~/Library/Mobile\ Documents/com~apple~CloudDocs"
-
-# Clear terminal
-alias c='clear'
-
 #------------------
 # Miscellaneous
 #------------------
 
 
+# Set Starship ZSH as a prompt
+eval "$(starship init zsh)"
+
+source ~/.iterm2_shell_integration.zsh
+
+export PATH="/usr/local/opt/qt/bin:$PATH"
+
 # Set Spaceship ZSH as a prompt
-autoload -U promptinit
-promptinit
-prompt spaceship
+autoload -U promptinit; promptinit
+
+# fzf autocompletions
+[ -f ~/.dotfiles/completions/.fzf.zsh ] && source ~/.dotfiles/completions/.fzf.zsh
+
+
+# Functions
+wttr() {
+    local location="${1// /+}"
+    shift
+    local args=""
+    for p in $WTTR_PARAMS "$@"; do
+        args+=" --data-urlencode $p "
+    done
+    curl -fGsS -H "Accept-Language: ${LANG%_*}" $args --compressed "wttr.in/${location}"
+    }
+
+pyenv() {
+    if [ "$1" = "version-name" ]; then
+        uv run python --version | sed 's/Python //g'
+    else
+        echo "pyenv: command not found"
+    fi
+}
+
+# TheFuck
+eval $(thefuck --alias fk)
+# Zoxide
+eval "$(zoxide init zsh)"
+
+# autocompletions
+fpath+=~/.zfunc
+autoload -Uz compinit && compinit

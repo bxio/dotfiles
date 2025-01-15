@@ -12,7 +12,7 @@ module.exports = {
     fontSize: 16,
 
     // font family with optional fallbacks
-    fontFamily: '"Roboto Mono for Powerline", "Meslo LG L DZ for Powerline", "Source Code Pro for Powerline", Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
+    fontFamily: '"Fira Code", "Roboto Mono for Powerline", "Meslo LG L DZ for Powerline", "Source Code Pro for Powerline", Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
     // default font weight: 'normal' or 'bold'
     fontWeight: 'normal',
 
@@ -92,25 +92,23 @@ module.exports = {
         label: 'git',
         options: [{
             label: 'diff',
+            backgroundColor: '#4a846a',
             command: 'git diff'
           },
           {
-            label: 'status',
-            command: 'git status'
+            label: 'mergesquash',
+            backgroundColor: "#5198D5",
+            command: 'git merge --squash HEAD@{1}',
+            prompt: true
           },
           {
             label: 'log',
-            backgroundColor: '#4a846a',
+            backgroundColor: "#51D58F",
             command: 'git log'
           },
           {
             label: 'remote',
             command: 'git remote -v'
-          },
-          {
-            label: 'clone',
-            command: 'git clone ',
-            prompt: true
           },
           {
             label: 'bx',
@@ -145,6 +143,7 @@ module.exports = {
           },
         ]
       },
+
       {
         label: '🐳Docker',
         options: [{
@@ -160,32 +159,46 @@ module.exports = {
             esc: true
           },
           {
-            label: 'img list',
-            //backgroundColor: '#d13232',
-            command: 'docker image list',
-            esc: true
-          },
-          {
             label: 'killall',
             backgroundColor: '#d13232',
             command: 'docker stop $(docker ps -a -q)',
             prompt: true,
             esc: true
+          },
+          {
+            label: 'dev',
+            command: 'docker build --file Devfile -t bxio/ho:test . && docker run -it --env-file env_list_dev bxio/ho:test',
+            esc: true
+          },
+          {
+            label: 'h-dev',
+            command: 'docker build --file Devfile -t bxio/ho:test . && docker run -it --env-file env_list_production bxio/ho:test',
+            esc: true
+          },
+          {
+            label: 'h-prod',
+            command: 'docker build -t bxio/ho:test . && docker run -it --env-file env_list_production bxio/ho:test',
+            esc: true
+          },
+          {
+            label: 'h-up',
+            command: 'docker build -t bxio/ho:web . && docker tag bxio/ho:web gcr.io/harmedore/ho:web && docker push gcr.io/harmedore/ho:web && docker push bxio/ho:web',
+            esc: true
+          }, {
+            label: 'h-con',
+            command: 'gcloud compute --project "harmedore" ssh --zone "us-west1-b" "ho"',
+            esc: true
           }
         ]
       },
+
       {
         label: 'fn()',
         options: [
           {
             label: 'gs',
             backgroundColor: '#37adff',
-            command: 'gsutil du -sh gs://artifacts.harmedore.appspot.com'
-          },
-          {
-            label: 'ssh-add',
-            backgroundColor: '#97606A',
-            command: 'ssh-add ~/.ssh/gh_vld ~/.ssh/id_rsa ~/.ssh/google_compute_engine'
+            command: 'gsutil du -sh gs://artifacts.harmedore.appspot.com gs://harmedore.appspot.com gs://hobackup gs://staging.harmedore.appspot.com gs://us.artifacts.harmedore.appspot.com'
           },
           {
             label: 'dig',
@@ -200,16 +213,26 @@ module.exports = {
             command: '/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend'
           },
           {
-            label: 'brew',
+            label: 'sha256',
             backgroundColor: '#37adff',
-            command: 'brew update && brew upgrade && brew cleanup -s; brew doctor'
+            command: 'shasum - a 256'
+          },
+          {
+            label: 'viragofit',
+            backgroundColor: '#37adff',
+            command: 'doctl compute ssh viragofit-ols'
+          },
+          {
+            label: 'aws',
+            backgroundColor: '#37adff',
+            command: 'ssh -i ~/.ssh/aws_ec2.pem ec2-user@ec2-18-222-191-98.us-east-2.compute.amazonaws.com'
           }
         ]
       },
     ],
 
     hyperTabs: {
-      tabIconsColored: true,
+      tabIcosnsColored: true,
       activityPulse: false,
       activityColor: 'salmon',
     },

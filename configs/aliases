@@ -1,25 +1,34 @@
 # Universal Shell Aliases, should work with both Bash and ZSH.
-alias ls=exa
-alias git=hub
+alias python='/opt/homebrew/bin/python3'
+
+alias fixow='/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister -kill -r -domain local -domain user;killall Finder;echo "Open With has been rebuilt, Finder will relaunch"'
+
+alias y='yarn'
+alias k='kubectl'
 
 alias mkdir='mkdir -p'
 alias chown='chown -Rv'
 alias chmod='chmod -Rv'
 
 alias tar='tar --verbose'
-alias tmux='tmux -2'
 alias logout='sudo pkill -u $USER'
 alias log-out='sudo pkill -u $USER'
 
-#afk
+## Eza
+# Changing "ls" to "eza"
+alias ls='eza --icons --color=always --git --group-directories-first'
+alias ll='eza -alF --icons --color=always --git --group-directories-first'
+alias la='eza -a --icons --color=always --git --group-directories-first'
+alias l='eza -F --icons --color=always --git --group-directories-first'
+
+# afk
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 
 # brew
-alias brewski='brew update && brew upgrade && brew cleanup -s; brew doctor'
+alias kiki='brew update && brew upgrade && brew cleanup -s; brew doctor'
 
-
-alias vom='vim'
-
+#jitouch
+alias jitouch="pkill Jitouch; sleep 1; nohup ~/Library/PreferencePanes/Jitouch.prefPane/Contents/Resources/Jitouch.app/Contents/MacOS/Jitouch > /dev/null 2>&1 &"
 
 alias '.=cd .'
 alias '..=cd ..'
@@ -29,7 +38,6 @@ alias '.....=cd ../../../..'
 
 # Recursively delete `.DS_Store` files
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
-
 
 # Git Aliases
 alias gcm="git commit -m"
@@ -57,3 +65,22 @@ alias grbc='git rebase --continue'
 alias gcmb="git branch --merged | grep -Ev '(^\*|master)' | xargs git branch -d"
 # Sets the upstream branch to be the same branch as the locally named branch
 alias gset='git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`'
+
+# Self installed tools
+alias ping='prettyping --nolegend'
+alias cat='bat'
+alias powershell='pwsh'
+alias we='~/whoare.sh $@'
+
+# General Aliases
+
+alias code=cursor
+alias 1p=op
+# Open .zshrc to be editor in VS Code
+alias change="code ~/.zshrc"
+# Re-run source command on .zshrc to update current terminal session with new settings
+alias update="source ~/.zshrc"
+# cd into iCloud drive folder in terminal
+alias icloud="cd ~/Library/Mobile\ Documents/com~apple~CloudDocs"
+# Clear terminal
+alias c='clear'

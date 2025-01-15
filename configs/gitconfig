@@ -1,12 +1,11 @@
-[user]
-  name = Bill Xiong
-  email = billxiong99@gmail.com
-
-[github]
-  user = bxio
+[include]
+    path = ~/.dotfiles/configs/git-personal.conf
+[includeIf "gitdir:~/Developer/"]
+    path = ~/.dotfiles/configs/git-work.conf
 
 [core]
   excludesfile = ~/.gitignore
+	editor = code
 
 [alias]
   c = commit -am
@@ -19,11 +18,11 @@
   ds = diff --staged
   s = status -s
 
-[url "git@github.com:bxio/"]
+[url "git@github.com:/"]
   insteadOf = "gh:"
 [url "git://github.com/"]
   insteadOf = "github:"
-[url "git@gitlab.com:bxio/"]
+[url "git@gitlab.com:/"]
   insteadOf = "gl:"
 [url "git://gitlab.com/"]
   insteadOf = "gitlab:"
@@ -37,3 +36,10 @@
 
 [help]
   autocorrect = 1
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[init]
+	defaultBranch = master
