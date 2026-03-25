@@ -1,0 +1,7 @@
+theme=Chester
+font-size=16.5
+font-family="Fira Code Nerd Font"
+window-decoration=true
+background-opacity=0.9
+macos-icon=custom
+macos-custom-icon=~/.dotfiles/configs/ghostty/icons/ghostty-original.icns

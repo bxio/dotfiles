@@ -23,9 +23,6 @@ alias a2c="aria2c -x16 -s16"
 # make nested directories
 alias mkdir="mkdir -p"
 
-# youtube-dl
-alias ytd="youtube-dl"
-
 # gnu coreutils ls for better output
 alias la="gls -laAhGg --color --group-directories-first"
 alias ls="gls -lACG --color --group-directories-first"

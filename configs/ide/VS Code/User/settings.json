@@ -1,0 +1,177 @@
+{
+  "[json]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.sortJSON": "never"
+    },
+  },
+  "[jsonc]": {
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.sortJSON": "never"
+    },
+  },
+  "[markdown]": {
+    "editor.tabSize": 4,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": false
+  },
+  "[python]": {
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    },
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.formatOnSave": true
+  },
+  "[vbs]": {},
+  "diffEditor.ignoreTrimWhitespace": false,
+  "editor.acceptSuggestionOnCommitCharacter": false,
+  "editor.acceptSuggestionOnEnter": "off",
+  "editor.accessibilitySupport": "off",
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "always",
+    "source.organizeImports": "always"
+  },
+  "editor.cursorBlinking": "smooth",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.cursorStyle": "line",
+  "editor.cursorWidth": 2,
+  "editor.emptySelectionClipboard": false,
+  "editor.fontFamily": "Fira Code, Operator Mono, Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 16,
+  "editor.fontWeight": "400",
+  "editor.formatOnPaste": true,
+  "editor.guides.bracketPairs": true,
+  "editor.guides.indentation": false,
+  "editor.letterSpacing": 0.5,
+  "editor.lineHeight": 25,
+  "editor.matchBrackets": "always",
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.quickSuggestions": {
+    "comments": false,
+    "other": true,
+    "strings": false
+  },
+  "editor.renderWhitespace": "all",
+  "editor.rulers": [
+    120,
+    175
+  ],
+  "editor.scrollBeyondLastLine": true,
+  "editor.smoothScrolling": true,
+  "editor.snippetSuggestions": "top",
+  "editor.trimAutoWhitespace": true,
+  "editor.useTabStops": true,
+  "editor.wordSeparators": ".\/\\()\"':,.;<>~!@#$%^&*|+=[]{}`~?",
+  "editor.wordWrapColumn": 120,
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "files.associations": {
+    ".env": "dotenv"
+  },
+  "files.autoSave": "onFocusChange",
+  "files.encoding": "utf8",
+  "files.hotExit": "off",
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "git.enableSmartCommit": true,
+  "git.openRepositoryInParentFolders": "never",
+  "git.showActionButton": {
+    "commit": true,
+    "publish": false
+  },
+  "github.copilot.advanced": {},
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": false,
+    "scminput": false,
+    "yaml": false
+  },
+  "gitlens.advanced.messages": {
+    "suppressLineUncommittedWarning": true
+  },
+  "gitlens.defaultDateFormat": null,
+  "gitlens.defaultDateShortFormat": "D MMM YYYY",
+  "gitlens.defaultTimeFormat": null,
+  "go.toolsManagement.autoUpdate": true,
+  "guides.sendUsagesAndStats": false,
+  "notebook.cellToolbarLocation": {
+    "default": "right",
+    "jupyter-notebook": "left"
+  },
+  "notebook.defaultFormatter": "charliermarsh.ruff",
+  // Valid settings you can choose to be affected
+  "peacock.affectedSettings": [
+    "activityBar",
+    "statusBar",
+    "titleBar"
+  ],
+  "peacock.favoriteColors": [
+    {
+      "name": "Angular Red",
+      "value": "#dd0531"
+    },
+    {
+      "name": "Azure Blue",
+      "value": "#007fff"
+    },
+    {
+      "name": "JavaScript Yellow",
+      "value": "#f9e64f"
+    },
+    {
+      "name": "Mandalorian Blue",
+      "value": "#1857a4"
+    },
+    {
+      "name": "Node Green",
+      "value": "#215732"
+    },
+    {
+      "name": "React Blue",
+      "value": "#61dafb"
+    },
+    {
+      "name": "Something Different",
+      "value": "#832561"
+    },
+    {
+      "name": "Svelte Orange",
+      "value": "#ff3d00"
+    },
+    {
+      "name": "Vue Green",
+      "value": "#42b883"
+    }
+  ],
+  "prettier.printWidth": 100000,
+  "ruff.importStrategy": "useBundled",
+  "ruff.lint.preview": true,
+  "ruff.nativeServer": "on",
+  "security.workspace.trust.untrustedFiles": "open",
+  "settingsSync.ignoredExtensions": [],
+  "settingsSync.ignoredSettings": [],
+  "settingsSync.keybindingsPerPlatform": true,
+  "telemetry.telemetryLevel": "off",
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.env.osx": {
+    "FIG_NEW_SESSION": "1"
+  },
+  "terminal.integrated.smoothScrolling": true,
+  "vscode-pastery.api-key": "ZAdGz6anrYbR4amG4PXWF7NY8ZfqXaK8",
+  "vsicons.dontShowNewVersionMessage": true,
+  "window.closeWhenEmpty": true,
+  "window.openFilesInNewWindow": "off",
+  "window.title": "${activeEditorFull}${separator}${rootName}",
+  "workbench.colorTheme": "One Monokai",
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter-notebook"
+  },
+  "workbench.list.smoothScrolling": true,
+  "workbench.settings.applyToAllProfiles": [
+    "editor.wordWrap"
+  ],
+  "workbench.startupEditor": "none",
+}
