@@ -2,10 +2,17 @@
 export HOMEBREW_AUTO_UPDATE_SECS=86400
 # Homebrew path
 export PATH="/opt/homebrew/bin:$PATH"
+# Cargo Path
+export PATH=$PATH:/Users/bill/.cargo/bin
+# GO Path
+export PATH=$PATH:$(go env GOPATH)/bin
+# uv
+export PATH="/Users/bill/.local/bin:$PATH"
+
 #------------------
 #### FIG ENV VARIABLES ####
 # Please make sure this block is at the start of this file.
-[ -s ~/.fig/shell/pre.sh ] && source ~/.fig/shell/pre.sh
+# [ -s ~/.fig/shell/pre.sh ] && source ~/.fig/shell/pre.sh
 #### END FIG ENV VARIABLES ####
 #------------------
 # Shell Variables
@@ -50,13 +57,7 @@ source ~/.aliases
 # Miscellaneous
 #------------------
 
-
-# Set Starship ZSH as a prompt
-eval "$(starship init zsh)"
-
-source ~/.iterm2_shell_integration.zsh
-
-export PATH="/usr/local/opt/qt/bin:$PATH"
+# export PATH="/usr/local/opt/qt/bin:$PATH"
 
 # Set Spaceship ZSH as a prompt
 autoload -U promptinit; promptinit
@@ -67,14 +68,18 @@ autoload -U promptinit; promptinit
 # Functions
 wttr() {
     local location="${1// /+}"
-    shift
+    test "$#" -gt 0 && shift
     local args=""
     for p in $WTTR_PARAMS "$@"; do
         args+=" --data-urlencode $p "
     done
     curl -fGsS -H "Accept-Language: ${LANG%_*}" $args --compressed "wttr.in/${location}"
-    }
+}
 
+# Set Starship ZSH as a prompt
+eval "$(starship init zsh)"
+# Set Oh My Posh ZSH as a prompt
+# eval "$(oh-my-posh init zsh)"
 
 # Zoxide
 eval "$(zoxide init zsh)"
@@ -89,9 +94,6 @@ fpath+=~/.zfunc; autoload -Uz compinit; compinit
 
 zstyle ':completion:*' menu select
 
-# Added by Windsurf
-export PATH="/Users/bill/.codeium/windsurf/bin:$PATH"
-
 # bun completions
 [ -s "/Users/bill/.bun/_bun" ] && source "/Users/bill/.bun/_bun"
 
@@ -105,3 +107,6 @@ export DOCKER_API_VERSION=1.41
 
 export NVM_DIR="$HOME/.nvm"
 source $(brew --prefix nvm)/nvm.sh
+
+# Added by Antigravity
+export PATH="/Users/bill/.antigravity/antigravity/bin:$PATH"

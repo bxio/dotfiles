@@ -3,7 +3,6 @@ alias python='/opt/homebrew/bin/python3'
 
 alias fixow='/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister -kill -r -domain local -domain user;killall Finder;echo "Open With has been rebuilt, Finder will relaunch"'
 
-alias y='yarn'
 alias k='kubectl'
 
 alias mkdir='mkdir -p'
@@ -14,15 +13,47 @@ alias tar='tar --verbose'
 alias logout='sudo pkill -u $USER'
 alias log-out='sudo pkill -u $USER'
 
+# different ls command wrappers
+# alias ls="gls -lACG --color --group-directories-first"
+alias ls='eza -a --icons --git'
+# alias ls='lsd -a'
+
+alias d='lsd'
+alias da='lsd -a'
+alias dda='lsd -la'
+
+# Eza
+alias l="eza -l --icons --git -a"
+alias lt="eza --tree --level=2 --long --icons --git"
+alias ltree="eza --tree --level=2  --icons --git"
+
+# Dirs
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ......="cd ../../../../.."
+alias open.="open ."
+
+# be less destructive
+alias rm="trash"
+
+# make nested directories
+alias mkdir="mkdir -p"
+
+# sudoed aliases, shell reloading and pretty paths
+alias sudo="sudo "
+alias reload="exec $SHELL -l"
+alias path="echo -e ${PATH//:/\\\n}"
+
 # afk
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 
-# brew
+# kiki brew updates, check, and doctor
 alias kiki='brew update && brew upgrade && brew cleanup -s; brew doctor'
 
 #jitouch
 alias jitouch="pkill Jitouch; sleep 1; nohup ~/Library/PreferencePanes/Jitouch.prefPane/Contents/Resources/Jitouch.app/Contents/MacOS/Jitouch > /dev/null 2>&1 &"
-
 
 # Git
 alias gcm="git commit -m"
@@ -48,13 +79,6 @@ alias dpa="docker ps -a"
 alias dl="docker ps -l -q"
 alias dx="docker exec -it"
 
-# Dirs
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
-alias ......="cd ../../../../.."
-
 # K8S
 # export KUBECONFIG=~/.kube/config
 alias k="kubectl"
@@ -72,11 +96,6 @@ alias ke="kubectl exec -it"
 alias kcns='kubectl config set-context --current --namespace'
 alias podname=''
 
-# Eza
-alias l="eza -l --icons --git -a"
-alias lt="eza --tree --level=2 --long --icons --git"
-alias ltree="eza --tree --level=2  --icons --git"
-
 # Recursively delete `.DS_Store` files
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 
@@ -84,22 +103,16 @@ alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 alias ping='prettyping --nolegend'
 alias cat='bat'
 alias powershell='pwsh'
-alias we='~/whoare.sh $@'
 
 # General Aliases
 
 # Code
 # alias code="open -a 'Visual Studio Code'"
-# alias code="open -a 'Cursor'"
-alias code="open -a 'Windsurf'"
+# alias code="open -a 'Windsurf'"
+alias code="open -a 'Cursor'"
 
 # VSCode Forks
 alias cursor="open -a 'Cursor'"
-alias windsurf="open -a 'Windsurf'"
-
-# Windsurf
-alias ws="open -a 'Windsurf'"
-alias wsc="open -a 'Windsurf'"
 
 # VSCode
 alias vscode="open -a 'Visual Studio Code'"

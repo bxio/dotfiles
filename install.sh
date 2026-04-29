@@ -58,24 +58,20 @@ else
   success
 fi
 
-# Remove bash last login
-touch ~/.hushlogin
 
 # create dotfiles directory and clone
-
 [[ ! -d "$HOME/Projects" ]] && mkdir -p "$HOME/Projects" & git clone -q https://github.com/bxio/dotfiles.git "$DOTLOC" & doing "Cloning dotfiles"
-
 
 # install homebrew if missing
 if [[ ! -x "$(command -v brew)" ]]; then
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" & doing "Installing homebrew"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" & doing "Installing homebrew"
 else
   success "Homebrew is already installed.\\n"
 fi
 
 
 # install homebrew packages
-brew bundle install --file="$DOTLOC/Brewfile" >/dev/null & doing "Installing packages"
+brew bundle install --file="$DOTLOC/homebrew/Brewfile" >/dev/null & doing "Installing packages"
 
 
 # change default shell to zsh
@@ -120,27 +116,15 @@ mkdir -p $HOME/Library/Application\ Support/Alfred\ 3/
 ln -s -i $DOTLOC/mac/alfred $HOME/Library/Application\ Support/Alfred\ 3/Alfred.alfredpreferences
 success
 
-# Rocket
-check "Loading Rocket Preferences..."
-ln -s $DOTLOC/mac/Rocket $HOME/Library/Application\ Support/Rocket
 # Docker for Mac
 check "Loading Docker Preferences..."
 ln -s $DOTLOC/mac/docker/settings.json $HOME/Library/Group\ Containers/group.com.docker/settings.json
+success
 
-### Langs stuff ###
-# PHP
-mkdir $HOME/.config/psysh
-ln -s -i ${DOTLOC}/langs/php/psysh-config.php $HOME/.config/psysh/config.php
-ln -s -i ${DOTLOC}/langs/php/composer.json $HOME/.composer/composer.json
-
-# Clojure
-mkdir $HOME/.config/clojure
-ln -s -i ${DOTLOC}/langs/clojure/profiles.clj $HOME/.config/clojure/profiles.clj
-
-# Scala
-mkdir -p $HOME/.sbt/1.0/plugins
-ln -s -i ${DOTLOC}/langs/scala/plugins.sbt $HOME/.sbt/1.0/plugins/plugins.sbt
-
+# ghostty
+check "Linking ghostty config..."
+ln -sf ~/.dotfiles/configs/ghostty/config ~/Library/Application\ Support/com.mitchellh.ghostty/config
+success
 
 # reload shell
-exec hyper
+exec "$SHELL"
