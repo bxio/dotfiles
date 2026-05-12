@@ -101,7 +101,6 @@ alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 
 # Self installed tools
 alias ping='prettyping --nolegend'
-alias cat='bat'
 alias powershell='pwsh'
 
 # General Aliases

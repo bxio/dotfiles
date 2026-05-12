@@ -39,9 +39,10 @@ HISTFILE=~/.zsh_history
 # Why not completions?
 fpath=(/usr/local/share/zsh-completions $fpath)
 # enable zsh syntax highlighting and autosuggestions
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /opt/homebrew/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+
 # bind key for history search
 bindkey "^[[A" history-substring-search-up
 bindkey "^[[B" history-substring-search-down
@@ -87,12 +88,18 @@ eval "$(zoxide init zsh)"
 # autocompletions
 for f in ~/.dotfiles/completions*; do source $f; done
 
-fpath+=~/.zfunc
-autoload -Uz compinit && compinit
-
-fpath+=~/.zfunc; autoload -Uz compinit; compinit
-
+# make completions menu select. Needs to be before compinit.
 zstyle ':completion:*' menu select
+
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+
+  autoload -Uz compinit
+  compinit
+fi
+
+fpath+=~/.zfunc
+
 
 # bun completions
 [ -s "/Users/bill/.bun/_bun" ] && source "/Users/bill/.bun/_bun"
@@ -103,6 +110,7 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH="/opt/homebrew/sbin:$PATH"
 export PATH="/opt/homebrew/sbin:$PATH"
 export DOCKER_API_VERSION=1.41
+export BUN_AGENT_RULE_DISABLED=1
 
 
 export NVM_DIR="$HOME/.nvm"
@@ -110,3 +118,11 @@ source $(brew --prefix nvm)/nvm.sh
 
 # Added by Antigravity
 export PATH="/Users/bill/.antigravity/antigravity/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="/Users/bill/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
+# pnpm end
