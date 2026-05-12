@@ -93,11 +93,12 @@ do
 done
 
 # link git, aliases, and hyper
-for file in gitconfig gitignore gitignore_global hyper.js
+for file in gitconfig gitignore gitignore_global git-template
 do
   #rm ~/.$file &>/dev/null
   ln -s -i $DOTLOC/configs/$file $HOME/.$file & check "Linking $file..."
 done
+
 success
 
 check "Installing completions..."

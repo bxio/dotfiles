@@ -43,3 +43,4 @@
 	required = true
 [init]
 	defaultBranch = master
+	templateDir = /Users/bill/.git-template
