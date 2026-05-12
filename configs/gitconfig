@@ -1,13 +1,14 @@
 [include]
-    path = ~/.dotfiles/configs/git-personal.conf
+  path = ~/.dotfiles/configs/git-personal.conf
 [includeIf "gitdir:~/Developer/"]
-    path = ~/.dotfiles/configs/git-work.conf
+  path = ~/.dotfiles/configs/git-work.conf
 
 [core]
   excludesfile = ~/.gitignore
-	editor = code
+  editor = code
 
 [alias]
+  new = "!f() { \\\n  git init && \\\n  cp ~/.git-template/.pre-commit-config.yaml . && \\\n  cp -r ~/.git-template/formatting/. .\n  pre-commit install && \\\n  pre-commit install --hook-type pre-push; \\\n}; f"
   c = commit -am
   e = commit --amend --all
   u = pull
@@ -17,7 +18,12 @@
   d = diff
   ds = diff --staged
   s = status -s
-	new = "!f() { \\\n  git init && \\\n  cp ~/.git-template/.pre-commit-config.yaml . && \\\n  cp -r ~/.git-template/formatting/. .\n  pre-commit install && \\\n  pre-commit install --hook-type pre-push; \\\n}; f"
+  st = status
+  br = branch
+  sw = switch
+  ci = commit
+  last = log -1 HEAD
+
 
 [url "git@github.com:/"]
   insteadOf = "gh:"
@@ -38,10 +44,10 @@
 [help]
   autocorrect = 1
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
 [init]
-	defaultBranch = master
-	templateDir = /Users/bill/.git-template
+  defaultBranch = master
+  templateDir = /Users/bill/.git-template

@@ -56,6 +56,7 @@ alias kiki='brew update && brew upgrade && brew cleanup -s; brew doctor'
 alias jitouch="pkill Jitouch; sleep 1; nohup ~/Library/PreferencePanes/Jitouch.prefPane/Contents/Resources/Jitouch.app/Contents/MacOS/Jitouch > /dev/null 2>&1 &"
 
 # Git
+alias gits='git status'
 alias gcm="git commit -m"
 alias gcam="git commit -a -m"
 alias gp="git push origin HEAD"
