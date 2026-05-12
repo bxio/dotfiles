@@ -44,8 +44,8 @@ source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /opt/homebrew/share/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 # bind key for history search
-bindkey "^[[A" history-substring-search-up
-bindkey "^[[B" history-substring-search-down
+bindkey '^[[A' history-substring-search-up # or '\eOA'
+bindkey '^[[B' history-substring-search-down # or '\eOB'
 
 
 
@@ -86,7 +86,7 @@ eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 
 # autocompletions
-for f in ~/.dotfiles/completions*; do source $f; done
+# for f in ~/.dotfiles/completions*; do source $f; done
 
 # make completions menu select. Needs to be before compinit.
 zstyle ':completion:*' menu select

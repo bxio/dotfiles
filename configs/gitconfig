@@ -17,6 +17,7 @@
   d = diff
   ds = diff --staged
   s = status -s
+	new = "!f() { \\\n  git init && \\\n  cp ~/.git-template/.pre-commit-config.yaml . && \\\n  cp -r ~/.git-template/formatting/. .\n  pre-commit install && \\\n  pre-commit install --hook-type pre-push; \\\n}; f"
 
 [url "git@github.com:/"]
   insteadOf = "gh:"
