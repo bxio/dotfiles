@@ -9,20 +9,25 @@
 
 [alias]
   new = "!f() { \\\n  git init && \\\n  cp ~/.git-template/.pre-commit-config.yaml . && \\\n  cp -r ~/.git-template/formatting/. .\n  pre-commit install && \\\n  pre-commit install --hook-type pre-push; \\\n}; f"
+  amend = commit --amend --no-edit
+  br = branch
   c = commit -am
-  e = commit --amend --all
-  u = pull
-  p = push
+  ci = commit
   co = checkout
-  l = log --oneline
   d = diff
   ds = diff --staged
+  e = commit --amend --all
+  fp = fetch --prune
+  l = log --oneline
+  last = log -1 HEAD
+  lg = log --graph --oneline --decorate --all
+  p = push
+  pushf = push --force-with-lease
   s = status -s
   st = status
-  br = branch
   sw = switch
-  ci = commit
-  last = log -1 HEAD
+  u = pull
+  unstage = restore --staged
 
 
 [url "git@github.com:/"]
