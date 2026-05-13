@@ -124,7 +124,12 @@ success
 
 # ghostty
 check "Linking ghostty config..."
-ln -sf ~/.dotfiles/configs/ghostty/config ~/Library/Application\ Support/com.mitchellh.ghostty/config
+ln -sf $DOTLOC/configs/ghostty/config $HOME/Library/Application\ Support/com.mitchellh.ghostty/config
+success
+
+# NPM
+check "Linking NPM config..."
+ln -s $DOTLOC/npm/npmrc $HOME/.npmrc
 success
 
 # reload shell

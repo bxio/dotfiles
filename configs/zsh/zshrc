@@ -10,11 +10,6 @@ export PATH=$PATH:$(go env GOPATH)/bin
 export PATH="/Users/bill/.local/bin:$PATH"
 
 #------------------
-#### FIG ENV VARIABLES ####
-# Please make sure this block is at the start of this file.
-# [ -s ~/.fig/shell/pre.sh ] && source ~/.fig/shell/pre.sh
-#### END FIG ENV VARIABLES ####
-#------------------
 # Shell Variables
 #------------------
 # export XDG_CONFIG_total_HOME=${XDG_CONFIG_HOME:-$HOME/.dotfiles/configs}
@@ -26,7 +21,6 @@ export EDITOR="code -w"
 export ANDROID_HOME=~/Library/Android/sdk
 # NVM directory variable
 export NVM_DIR="$HOME/.nvm"
-
 
 #------------------
 # Zsh hooks
@@ -99,19 +93,6 @@ if type brew &>/dev/null; then
 fi
 
 fpath+=~/.zfunc
-
-
-# bun completions
-[ -s "/Users/bill/.bun/_bun" ] && source "/Users/bill/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-export PATH="/opt/homebrew/sbin:$PATH"
-export PATH="/opt/homebrew/sbin:$PATH"
-export DOCKER_API_VERSION=1.41
-export BUN_AGENT_RULE_DISABLED=1
-
 
 export NVM_DIR="$HOME/.nvm"
 source $(brew --prefix nvm)/nvm.sh

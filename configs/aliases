@@ -28,6 +28,8 @@ alias lt="eza --tree --level=2 --long --icons --git"
 alias ltree="eza --tree --level=2  --icons --git"
 
 # Dirs
+alias open.="open ."
+alias code.="code ."
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
