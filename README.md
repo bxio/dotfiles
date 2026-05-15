@@ -1,4 +1,5 @@
 # [Bill's](https://github.com/bxio) dotfiles
+
 ```sh
     *******              **     **** **  **
    /**////**            /**    /**/ //  /**
@@ -28,6 +29,6 @@ curl -fsSL bx.gs/vscode-install | sh
 
 ### Features
 
-* Zsh
-* Hyper terminal
-* iStats Menus
+- Zsh
+- Hyper terminal
+- iStats Menus
