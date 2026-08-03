@@ -13,6 +13,9 @@ if type brew &>/dev/null; then
   compinit
 fi
 
+#------------------
+# Paths and Environment Variables
+#------------------
 # Homebrew auto-update to 1 week
 export HOMEBREW_AUTO_UPDATE_SECS=86400
 # Homebrew path
@@ -68,8 +71,10 @@ source ~/.aliases
 
 # export PATH="/usr/local/opt/qt/bin:$PATH"
 
-# Set Spaceship ZSH as a prompt
-autoload -U promptinit; promptinit
+# Set Starship ZSH as a prompt
+eval "$(starship init zsh)"
+# Set Oh My Posh ZSH as a prompt
+# eval "$(oh-my-posh init zsh)"
 
 # fzf autocompletions
 # [ -f ~/.dotfiles/completions/.fzf.zsh ] && source ~/.dotfiles/completions/.fzf.zsh
@@ -84,11 +89,6 @@ wttr() {
     done
     curl -fGsS -H "Accept-Language: ${LANG%_*}" $args --compressed "wttr.in/${location}"
 }
-
-# Set Starship ZSH as a prompt
-eval "$(starship init zsh)"
-# Set Oh My Posh ZSH as a prompt
-# eval "$(oh-my-posh init zsh)"
 
 # Zoxide
 eval "$(zoxide init zsh)"
