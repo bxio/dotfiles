@@ -8,7 +8,7 @@
   editor = code
 
 [alias]
-  # git new command
+  # git new
   new = "!f() { \\\n  git init && \\\n  cp ~/.git-template/.pre-commit-config.yaml . && \\\n  cp -r ~/.git-template/formatting/. .\n  pre-commit install && \\\n  pre-commit install --hook-type pre-push; \\\n}; f"
   # git whoami
   whoami = "!f() { \\\n  git config --get user.name; \\\n  git config --get user.email;\\\n}; f"
